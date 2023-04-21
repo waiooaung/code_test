@@ -1,0 +1,17 @@
+type Employee {
+    id: ID!,
+    name: String!
+    email: String!
+}
+
+extend type Query {
+    getEmployees: [Employee!]! @paginate
+}
+
+extend type Mutation {
+    generateEmployee(user_id: ID!): String!
+
+    updateEmployee(id: ID!, name: String!): Employee! @update
+
+    deleteEmployee(id: ID! @whereKey): Employee @delete
+}
